@@ -10,7 +10,56 @@ Class Auth extends CI_Controller{
 
     public function index()
     {
-        $this->load->view('auth/login');
+
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
+        
+        if($this->form_validation->run() == false){
+            $this->load->view('auth/login');
+        }else{
+            $this->_login();
+        }
+    }
+    
+    public function _login()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        
+        $user = $this->db->get_where('user',['email' => $email])->row_array();
+
+        if($user){
+            if($user['is_active'] == 1){
+                if(password_verify($password, $user['password'])){
+                    if($user['role_id'] == 1){
+                        echo "a";
+                    }elseif($user['role_id'] == 2){
+                        echo "b";
+                    }
+                    $data = [
+                        "email" => $user['email'],
+                        "password" => $user['password'],
+                    ];
+                    $this->session->set_userdata($data);
+                }else{
+                    $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                    Wrong Password
+                    </div>');
+                    redirect('auth');
+                }
+            }else{
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                Email is not activate
+                </div>');
+                redirect('auth');
+            }
+        }else{
+            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+            Email is not registered
+            </div>');
+            redirect('auth');
+        }
+
     }
 
     public function register()
@@ -25,7 +74,7 @@ Class Auth extends CI_Controller{
             $data = [
                 "email" => htmlspecialchars($this->input->post('email',true)),
                 "username" => htmlspecialchars($this->input->post('username',true)),
-                "password" => htmlspecialchars($this->input->post('password',true)),
+                "password" => password_hash($this->input->post('password'),PASSWORD_DEFAULT),
                 "image" => 'default.jpg',
                 "role_id" => 2,
                 "is_active" => 1,
