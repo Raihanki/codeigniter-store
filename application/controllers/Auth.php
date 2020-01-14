@@ -32,7 +32,7 @@ Class Auth extends CI_Controller{
             if($user['is_active'] == 1){
                 if(password_verify($password, $user['password'])){
                     if($user['role_id'] == 1){
-                        echo "a";
+                        redirect('admin');
                     }elseif($user['role_id'] == 2){
                         echo "b";
                     }
