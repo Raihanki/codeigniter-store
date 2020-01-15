@@ -6,7 +6,7 @@
   <div class="sidebar-brand-icon rotate-n-15">
     <i class="fas fa-laugh-wink"></i>
   </div>
-  <div class="sidebar-brand-text mx-2">GAOU MARKET</div>
+  <div class="sidebar-brand-text mx-2">GAOU CAFE</div>
 </a>
 
 <!-- Heading -->
