@@ -27,11 +27,11 @@
                 
 				<form class="login100-form validate-form" action="<?= base_url('auth') ?>" method="post">
                     <span class="login100-form-title">
-                        Member Login
+                        Login
 					</span>
                     <?= $this->session->flashdata('message'); ?>
 
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -39,7 +39,7 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100">
 						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -54,8 +54,8 @@
 					</div>
 
 					<div class="text-center p-t-120">
-						<a class="txt2" href="<?= base_url('auth/') ?>register">
-							Create your Account
+						<a class="txt2" href="#">
+							&copy;Raihanhori 2020
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>

@@ -22,7 +22,7 @@
 					<img src="<?= base_url('assets/') ?>images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="<?= base_url() ?>auth/register" method="post">
+				<form class="login100-form validate-form" action="<?= base_url() ?>admin/register" method="post">
 					<span class="login100-form-title">
 						Member Register
 					</span>
@@ -58,8 +58,8 @@
 					</div>
 
 					<div class="text-center p-t-120">
-						<a class="txt2" href="<?= base_url('auth') ?>">
-							Login Here
+						<a class="txt2" href="<?= base_url('admin/user') ?>">
+							Back To Data User
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
