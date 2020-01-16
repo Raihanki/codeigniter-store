@@ -12,7 +12,42 @@ Class Kasir extends CI_Controller{
         $data['title'] = 'DAFTAR MENU';
         $data['kategori'] = $this->db->get('kategori')->result_array();
         $data['menu'] = $this->db->get('menu')->result_array();
+        $this->load->view('kasir/header',$data);
         $this->load->view('kasir/index',$data);
+        $this->load->view('kasir/footer',$data);
+    }
+
+    public function keranjang()
+    {
+        $data['title'] = 'KERANJANG';
+        $data['keranjang'] = $this->db->get('keranjang')->result_array();
+        $this->load->view('kasir/header',$data);    
+        $this->load->view('kasir/keranjang',$data);
+        $this->load->view('kasir/footer',$data);
+    }
+    
+    public function tambahKeranjang($id)
+    {   
+        $data['keranjang'] = $this->db->get_where('menu',['id' => $id])->row_array();
+        $menu = [
+            "nama_menu" => $data['keranjang']['nama_menu'],
+            "jumlah" => $data['keranjang']['porsi'],
+            "harga" => $data['keranjang']['harga'],
+            "gambar" => $data['keranjang']['gambar'],
+            "tanggal" => time()
+         ];
+         $this->db->insert('keranjang',$menu);
+         redirect('kasir');
+    }
+
+    public function deleteKeranjang($id)
+    {   
+        $this->db->where('id',$id);
+        $this->db->delete('keranjang');
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+            Berhasil Di Cancel
+            </div>');
+            redirect('kasir/keranjang');
     }
 
     public function makanan()
@@ -20,7 +55,9 @@ Class Kasir extends CI_Controller{
         $data['title'] = 'DAFTAR MENU - MAKANAN';
         $data['kategori'] = $this->db->get('kategori')->result_array();
         $data['menu'] = $this->db->get_where('menu',['kategori' => "makanan"])->result_array();
+        $this->load->view('kasir/header',$data);
         $this->load->view('kasir/index',$data);
+        $this->load->view('kasir/footer',$data);
     }
 
     public function minuman()
@@ -28,7 +65,9 @@ Class Kasir extends CI_Controller{
         $data['title'] = 'DAFTAR MENU - MINUMAN';
         $data['kategori'] = $this->db->get('kategori')->result_array();
         $data['menu'] = $this->db->get_where('menu',['kategori' => "minuman"])->result_array();
+        $this->load->view('kasir/header',$data);
         $this->load->view('kasir/index',$data);
+        $this->load->view('kasir/footer',$data);
     }
 
 }

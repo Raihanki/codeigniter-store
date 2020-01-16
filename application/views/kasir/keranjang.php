@@ -1,21 +1,11 @@
-
-    <!-- card -->
-    <div class="container">
+<div class="container">
 
         <div class="row">
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="text-center">PILIH KATEGORI</h5>
-                        <?= $this->session->flashdata('message'); ?>
-                        <div class="row">
-                            <div class="col d-flex justify-content-center">
-                                <a href="<?= base_url('kasir') ?>" class="btn btn-primary m-3">Semua Kategori</a>
-                                <?php foreach($kategori as $kat) : ?>
-                                    <a href="<?= base_url('kasir/') ?><?= $kat['kategori'] ?>" class="btn btn-primary m-3"><?= $kat['kategori'] ?></a>
-                                <?php endforeach; ?>    
-                            </div>
-                        </div>
+                        <h5 class="text-center">DATA MENU</h5>
+                    <?= $this->session->flashdata('message'); ?>
                     </div>
                     <form action="" method="post">
                         <div class="row m-3">
@@ -33,34 +23,35 @@
                                 <tr>
                                 <th>No</th>
                                 <th>Nama Menu</th>
+                                <th>Jumlah</th>
                                 <th>Harga</th>
-                                <th>Kategori</th>
-                                <th>Tersedia</th>
                                 <th>Gambar</th>
                                 <th>Opsi</th>
                                 </tr>
                             </thead>
                             <?php $i = 1; ?>
-                            <?php foreach($menu as $m) : ?>
+                            <?php foreach($keranjang as $k) : ?>
                             <tbody>
-                                <tr>
-                                <th><?= $i; ?></th>
-                                <td><?= $m['nama_menu'] ?></td>
-                                <td><?= $m['harga'] ?></td>
-                                <td><?= $m['kategori'] ?></td>
-                                <td><?= $m['porsi'] ?></td>
-                                <td><?= $m['gambar'] ?></td>
-                                <td><a href="<?= base_url('kasir/tambahKeranjang/') ?><?= $m['id'] ?>" class="btn btn-primary">Add To Cart</a></td>
-                                </tr>
+                                <td><?= $i; ?></td>
+                                <td><?= $k['nama_menu']; ?></td>
+                                <td><?= $k['jumlah']; ?></td>
+                                <td id="harga"><?= $k['harga']; ?></td>
+                                <td><?= $k['gambar']; ?></td>
+                                <td>
+                                    <a href="<?= base_url('kasir/deleteKeranjang/') ?><?= $k['id'] ?>" class="btn btn-warning">Cancel</a>
+                                </td>
                             </tbody>
                             <?php $i++; ?>
                             <?php endforeach; ?>
                             </table>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <p class="btn btn-primary">Total Harga</p>
+                        <p class="btn btn-success">=</p>
+                        <p class="btn btn-primary" id="total">Rp.</p>
+                    </div>
             </div>
         </div>
 
     </div>
-
-    
