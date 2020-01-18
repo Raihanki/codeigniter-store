@@ -21,9 +21,21 @@ Class Kasir extends CI_Controller{
     {
         $data['title'] = 'KERANJANG';
         $data['keranjang'] = $this->db->get('keranjang')->result_array();
-        $this->load->view('kasir/header',$data);    
-        $this->load->view('kasir/keranjang',$data);
-        $this->load->view('kasir/footer',$data);
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->form_validation->set_rules('bayar','Bayar','required|trim|integer',[
+            'required' => 'Silahkan Inputkan Uang Anda di Atas',
+            'integer' => 'Tolong Masukan Angka Dari Nominal Uang Saja'
+        ]);
+
+        if($this->form_validation->run() == false){
+            $this->load->view('kasir/header',$data);    
+            $this->load->view('kasir/keranjang',$data);
+            $this->load->view('kasir/footer',$data);
+        }else{
+            $uang = $this->input->post('bayar');
+            $total = $this->input->post('total');
+        }
     }
     
     public function tambahKeranjang($id)

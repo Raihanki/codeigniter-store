@@ -41,15 +41,38 @@
                                     <a href="<?= base_url('kasir/deleteKeranjang/') ?><?= $k['id'] ?>" class="btn btn-warning">Cancel</a>
                                 </td>
                             </tbody>
+                            <?php $j[] = $k['harga']; ?>
                             <?php $i++; ?>
                             <?php endforeach; ?>
                             </table>
+                            <?php $total = array_sum($j); ?>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="btn btn-primary">Total Harga</p>
-                        <p class="btn btn-success">=</p>
-                        <p class="btn btn-primary" id="total">Rp.</p>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="btn btn-primary">Total Harga</p>
+                                <p class="btn btn-success">=</p>
+                                <p class="btn btn-primary" name="" id="total">Rp. <?= $total; ?>,-</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <form action="" method="post">
+                                    <input type="hidden" name="total" value="<?= $total; ?>">
+                                    <div class="row">
+                                        <div class="col d-flex justify-content-center">
+                                            <p class="btn btn-outline-danger">Bayar Disini</p>
+                                        </div>
+                                    </div>
+                                    <input class="form-control" type="text" name="bayar" placeholder="Masukan Nominal Uang Anda">
+                                    <?= form_error('bayar','<small class="text-danger ml-1">','</small>') ?>
+                                    <div class="row">
+                                        <div class="col d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-primary mt-2">Bayar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
             </div>
         </div>
