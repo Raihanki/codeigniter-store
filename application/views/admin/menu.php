@@ -13,43 +13,42 @@
                     <div class="col-md-3">
                         <a href="<?= base_url('admin/addMenu') ?>" class="btn btn-primary mb-3">Add New Menu</a>
                     </div>
-                    <div class="col-md-3">
-                        <a href="<?= base_url('admin/kategori') ?>" class="btn btn-primary mb-3">Kategori</a>
-                    </div>
                 </div>
 
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Qty</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Action</th>
-                    </tr>
-                </thead>
-<?php $i = 1; ?>
-<?php foreach($menu as $datamenu) : ?>
-                <tbody>
-                    <tr>
-                    <th scope="row"><?= $i; ?></th>
-                    <td><?= $datamenu['nama_menu'] ?></td>
-                    <td><?= $datamenu['harga'] ?></td>
-                    <td><?= $datamenu['kategori'] ?></td>
-                    <td><?= $datamenu['porsi'] ?></td>
-                    <td><?= $datamenu['gambar'] ?></td>
-                    <td>
-                        <a href="" data-toggle="modal" data-target="#exampleModal" class="badge badge-info">Detail</a>
-                        <a href="<?= base_url('admin/editMenu/') ?><?= $datamenu['id'] ?>" class="badge badge-success">Edit</a>
-                        <a href="<?= base_url('admin/deleteMenu/') ?><?= $datamenu['id'] ?>" class="badge badge-danger">Hapus</a>
-                    </td>
-                    </tr>
-                </tbody>
-<?php $i++; ?>
-<?php endforeach; ?>
-            </table>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                  <thead>
+                      <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Qty</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Action</th>
+                      </tr>
+                  </thead>
+  <?php $i = 1; ?>
+  <?php foreach($menu as $datamenu) : ?>
+                  <tbody>
+                      <tr>
+                      <th scope="row"><?= $i; ?></th>
+                      <td><?= $datamenu['nama_menu'] ?></td>
+                      <td><?= $datamenu['harga'] ?></td>
+                      <td><?= $datamenu['kategori'] ?></td>
+                      <td><?= $datamenu['porsi'] ?></td>
+                      <td><img src="<?= base_url('assets/imgmenu/') ?><?= $datamenu['gambar']; ?>" alt="<?= $datamenu['nama_menu'] ?>" width="80px" height="70px"></td>
+                      <td>
+                          <a href="" data-toggle="modal" data-target="#exampleModal" class="badge badge-info">Detail</a>
+                          <a href="<?= base_url('admin/editMenu/') ?><?= $datamenu['id'] ?>" class="badge badge-success">Edit</a>
+                          <a href="<?= base_url('admin/deleteMenu/') ?><?= $datamenu['id'] ?>" class="badge badge-danger">Hapus</a>
+                      </td>
+                      </tr>
+                  </tbody>
+  <?php $i++; ?>
+  <?php endforeach; ?>
+              </table>
+            </div>
           </div>
 
 
@@ -82,8 +81,8 @@
             <input type="text" value="<?= $datamenu['kategori'] ?>" class="form-control mb-2" readonly>
             <label>Porsi</label>
             <input type="text" value="<?= $datamenu['porsi'] ?>" class="form-control mb-2" readonly>
-            <label>Gambar</label>
-            <input type="text" value="<?= $datamenu['gambar'] ?>" class="form-control mb-2" readonly>
+            <label>Gambar</label><br>
+            <img src="<?= base_url('assets/imgmanu/') ?><?= $datamenu['gambar'] ?>" alt="<?= $datamenu['nama_menu'] ?>" width="100px" height="100px">
         </div>
       </div>
       <div class="modal-footer">

@@ -8,8 +8,8 @@
         <div class="container">
 
             <?= $this->session->flashdata('message'); ?>
-
-            <form action="<?= base_url('admin/addMenu') ?>" method="post">
+            
+            <?= form_open_multipart('admin/addMenu'); ?>
                 <div class="form-group">
                     <label>Menu Name</label>
                     <input type="text" name="namamenu" class="form-control">
@@ -29,7 +29,7 @@
                     <input type="text" name="porsi" class="form-control">
                     <?= form_error('porsi','<small class="text-danger">','</small>'); ?><br>
                     <label>Image</label>
-                    <input type="text" name="gambar" class="form-control">
+                    <input type="file" name="gambar" class="form-control p-1">
                     <?= form_error('gambar','<small class="text-danger">','</small>'); ?><br>
                     <a href="<?= base_url('admin/menu'); ?>" class="btn btn-danger">Cancel</a>
                     <button type="submit" class="btn btn-primary">Add Menu</button>

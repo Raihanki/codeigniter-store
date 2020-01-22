@@ -17,13 +17,14 @@
                             </div>
                         </div>
                     </form>
+                                <form action="" method="post">
                         <div class="table-responsive">
                             <table class="table">
                             <thead class="thead-light">
                                 <tr>
                                 <th>No</th>
                                 <th>Nama Menu</th>
-                                <th>Jumlah</th>
+                                <th>Porsi</th>
                                 <th>Harga</th>
                                 <th>Gambar</th>
                                 <th>Opsi</th>
@@ -34,14 +35,14 @@
                             <tbody>
                                 <td><?= $i; ?></td>
                                 <td><?= $k['nama_menu']; ?></td>
-                                <td><?= $k['jumlah']; ?></td>
-                                <td id="harga"><?= $k['harga']; ?></td>
-                                <td><?= $k['gambar']; ?></td>
+                                <td><?= $k['jumlah'] ?></td>
+                                <td id="harga"><?= $k['harga'] * $k['jumlah']; ?></td>
+                                <td><img src="<?= base_url('assets/imgmenu/') ?><?= $k['gambar']; ?>" alt="<?= $k['nama_menu'] ?>" width="80px" height="70px"></td>
                                 <td>
                                     <a href="<?= base_url('kasir/deleteKeranjang/') ?><?= $k['id'] ?>" class="btn btn-warning">Cancel</a>
                                 </td>
                             </tbody>
-                            <?php $j[] = $k['harga']; ?>
+                            <?php $j[] = $k['harga'] * $k['jumlah']; ?>
                             <?php $i++; ?>
                             <?php endforeach; ?>
                             </table>
@@ -56,7 +57,6 @@
                                 <p class="btn btn-primary" name="" id="total">Rp. <?= $total; ?>,-</p>
                             </div>
                             <div class="col-sm-6">
-                                <form action="" method="post">
                                     <input type="hidden" name="total" value="<?= $total; ?>">
                                     <div class="row">
                                         <div class="col d-flex justify-content-center">

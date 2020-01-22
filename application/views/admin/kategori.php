@@ -7,29 +7,31 @@
 
           <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary mb-2">Add New Kategori</a>
 
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Kategoti</th>
-                    <th scope="col">Action</th>
-                    </tr>
-                </thead>
-<?php $i = 1; ?>
-<?php foreach($kategori as $kat) : ?>
-                <tbody>
-                    <tr>
-                    <th scope="row"><?= $i; ?></th>
-                    <td><?= $kat['kategori'] ?></td>
-                    <td>
-                        <a href="<?= base_url('admin/editKategori/') ?><?= $kat['id'] ?>" class="badge badge-success">Edit</a>
-                        <a href="<?= base_url('admin/deleteKategori/') ?><?= $kat['id'] ?>" class="badge badge-danger">Hapus</a>
-                    </td>
-                    </tr>
-                </tbody>
-<?php $i++; ?>
-<?php endforeach; ?>
-            </table>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                  <thead>
+                      <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Kategoti</th>
+                      <th scope="col">Action</th>
+                      </tr>
+                  </thead>
+  <?php $i = 1; ?>
+  <?php foreach($kategori as $kat) : ?>
+                  <tbody>
+                      <tr>
+                      <th scope="row"><?= $i; ?></th>
+                      <td><?= $kat['kategori'] ?></td>
+                      <td>
+                          <a href="<?= base_url('admin/editKategori/') ?><?= $kat['id'] ?>" class="badge badge-success">Edit</a>
+                          <a href="<?= base_url('admin/deleteKategori/') ?><?= $kat['id'] ?>" class="badge badge-danger">Hapus</a>
+                      </td>
+                      </tr>
+                  </tbody>
+  <?php $i++; ?>
+  <?php endforeach; ?>
+              </table>
+            </div>
 
             <a href="<?= base_url('admin/menu') ?>" class="btn btn-danger">Cancel</a>
 

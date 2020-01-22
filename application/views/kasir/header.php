@@ -24,7 +24,9 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                     <a class="nav-item nav-link" href="<?= base_url('kasir') ?>">Menu</a>
+                    <?php if($keranjang) : ?>
                     <a class="nav-item nav-link" href="<?= base_url('kasir/keranjang') ?>">Keranjang</a>
+                    <?php endif; ?>
                     <a class="nav-item nav-link" href="<?= base_url('auth/logout') ?>">Logout</a>
                 </div>
             </div>

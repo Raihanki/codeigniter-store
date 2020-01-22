@@ -9,6 +9,7 @@
 
           <?= $this->session->flashdata('message'); ?>
 
+          <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -37,6 +38,8 @@
 <?php $id++; ?>
 <?php endforeach; ?>
             </table>
+          </div>
+          
 
         </div>
         <!-- /.container-fluid -->

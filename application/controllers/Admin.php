@@ -6,6 +6,9 @@ Class Admin extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
+        if (!$this->session->userdata('email')) {
+            redirect('auth');
+        }
     }
     
     public function index()
@@ -131,7 +134,6 @@ Class Admin extends CI_Controller{
         $this->form_validation->set_rules('hargamenu','Menu Price','required|trim');
         $this->form_validation->set_rules('kategori','Category','required|trim');
         $this->form_validation->set_rules('porsi','Qty','required|trim');
-        $this->form_validation->set_rules('gambar','Image','required|trim');
 
         if($this->form_validation->run() == false){
             $this->load->view('admin/header',$data);
@@ -140,20 +142,30 @@ Class Admin extends CI_Controller{
             $this->load->view('admin/addMenu',$data);
             $this->load->view('admin/footer',$data);
         }else{
-            $data = [
-                "nama_menu" => htmlspecialchars($this->input->post('namamenu',true)),
-                "harga" => htmlspecialchars($this->input->post('hargamenu',true)),
-                "kategori" => htmlspecialchars($this->input->post('kategori',true)),
-                "porsi" => htmlspecialchars($this->input->post('porsi',true)),
-                "gambar" => htmlspecialchars($this->input->post('gambar',true))
-            ];
+                $config['upload_path']          = './assets/imgmenu';
+                $config['allowed_types']        = 'jpg|png';
+                $config['max_size']             = '4000';
+                $this->load->library('upload', $config);
 
-            $this->db->insert('menu',$data);
-            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
-            Menu Added
-            </div>');
-            redirect('admin/menu');
-
+                if(!$this->upload->do_upload('gambar')){
+                    $error = $this->upload->display_errors('<div class="alert alert-danger" role="alert">','</div>');
+                }else{
+                    $a = $this->upload->data('file_name');
+                    
+                    $data = [
+                        "nama_menu" => htmlspecialchars($this->input->post('namamenu',true)),
+                        "harga" => htmlspecialchars($this->input->post('hargamenu',true)),
+                        "kategori" => htmlspecialchars($this->input->post('kategori',true)),
+                        "porsi" => htmlspecialchars($this->input->post('porsi',true)),
+                        "gambar" => $a
+                    ];
+                    
+                    $this->db->insert('menu',$data);
+                    $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+                    Menu Added
+                    </div>');
+                    redirect('admin/menu');
+                }
         }
     }
 
@@ -167,7 +179,6 @@ Class Admin extends CI_Controller{
         $this->form_validation->set_rules('hargamenu','Menu Price','required|trim');
         $this->form_validation->set_rules('kategori','Category','required|trim');
         $this->form_validation->set_rules('porsi','Qty','required|trim');
-        $this->form_validation->set_rules('gambar','Image','required|trim');
 
         if($this->form_validation->run() == false){
             $this->load->view('admin/header',$data);
@@ -286,12 +297,22 @@ Class Admin extends CI_Controller{
     {
         $data['title'] = 'Histori Penjualan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['histori'] = $this->db->get('histori_pembelian')->result_array();
         
         $this->load->view('admin/header',$data);
         $this->load->view('admin/sidebar',$data);
         $this->load->view('admin/topbar',$data);
         $this->load->view('admin/histori',$data);
         $this->load->view('admin/footer',$data);
+    }
+
+    public function hapusHistori()
+    {
+        $this->db->empty_table('histori_pembelian');
+        $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+        Histori Dihapus
+        </div>');
+        redirect('admin/histori');
     }
 
 }
