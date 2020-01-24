@@ -7,7 +7,7 @@
                         <h5 class="text-center">DATA MENU</h5>
                     <?= $this->session->flashdata('message'); ?>
                     </div>
-                    <form action="" method="post">
+                    <?= form_open() ?>
                         <div class="row m-3">
                             <div class="col-sm-1">
                                 <button class="btn btn-primary" type="submit">Search</button>
@@ -17,7 +17,7 @@
                             </div>
                         </div>
                     </form>
-                                <form action="" method="post">
+                                <?= form_open() ?>
                         <div class="table-responsive">
                             <table class="table">
                             <thead class="thead-light">

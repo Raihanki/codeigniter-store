@@ -28,6 +28,9 @@
                     <a class="nav-item nav-link" href="<?= base_url('kasir/keranjang') ?>">Keranjang</a>
                     <?php endif; ?>
                     <a class="nav-item nav-link" href="<?= base_url('auth/logout') ?>">Logout</a>
+                    <?php if($user['role_id'] == 1) : ?>
+                    <a class="nav-item nav-link" href="<?= base_url('admin') ?>">Back to Dashboard</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

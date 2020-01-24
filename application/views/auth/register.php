@@ -23,6 +23,7 @@
 				</div>
 
 				<form class="login100-form validate-form" action="<?= base_url() ?>admin/register" method="post">
+				<input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>">
 					<span class="login100-form-title">
 						Member Register
 					</span>

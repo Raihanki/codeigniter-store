@@ -17,7 +17,7 @@
                             </div>
                         </div>
                     </div>
-                    <form action="" method="post">
+                    <?= form_open() ?>
                         <div class="row m-3">
                             <div class="col-sm-1">
                                 <button class="btn btn-primary" type="submit">Search</button>
@@ -44,6 +44,7 @@
                             <?php foreach($menu as $m) : ?>
                             <tbody>
                             <form action="<?= base_url('kasir/tambahKeranjang/') ?><?= $m['id'] ?>" method="post">
+                            <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>">
                                 <tr>
                                 <th><?= $i; ?></th>
                                 <td><?= $m['nama_menu'] ?></td>

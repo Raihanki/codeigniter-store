@@ -9,7 +9,7 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <form action="" method="post">
+            <?= form_open(); ?>
                 <div class="form-group">
                     <label>Menu Name</label>
                     <input type="text" name="namamenu" value="<?= $menu['nama_menu'] ?>" class="form-control">

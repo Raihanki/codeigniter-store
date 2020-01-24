@@ -5,7 +5,7 @@
           <!-- Page Heading --> 
           <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-          <form action="" method="post">
+          <?= form_open() ?>
             <div class="container">
               <div class="form-group">
                 <label>Email</label>

@@ -6,7 +6,7 @@
           <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
             <div class="container">
-            <form action="" method="post">
+            <?= form_open(); ?>
                 <div class="form-group">
                     <label>Nama Kategori</label>
                     <input type="text" class="form-control" name="kategori" value="<?= $kategori['kategori'] ?>">

@@ -53,7 +53,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?= base_url('admin/addKategori') ?>" method="post">
+      <?= form_open('admin/addKategori') ?>
             <div class="form-group">
                 <label>Nama Kategori</label>
                 <input type="text" class="form-control" name="kategori">

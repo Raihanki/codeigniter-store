@@ -9,10 +9,11 @@ Class Kasir extends CI_Controller{
             redirect('auth');
         }
     }
-
+    
     public function index()
     {
         $data['title'] = 'DAFTAR MENU';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['kategori'] = $this->db->get('kategori')->result_array();
         $data['menu'] = $this->db->get('menu')->result_array();
         $data['keranjang'] = $this->db->get('keranjang')->result_array();
@@ -24,8 +25,8 @@ Class Kasir extends CI_Controller{
     public function keranjang()
     { 
             $data['title'] = 'KERANJANG';
-            $data['keranjang'] = $this->db->get('keranjang')->result_array();
             $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['keranjang'] = $this->db->get('keranjang')->result_array();
             $a = $data['keranjang'];
             if(!$a){
                 redirect('kasir');
@@ -59,6 +60,7 @@ Class Kasir extends CI_Controller{
 
     public function tambahKeranjang($id)
     {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['keranjang'] = $this->db->get_where('menu',['id' => $id])->row_array();
         $menu = [
             "id" => $id,
@@ -84,6 +86,7 @@ Class Kasir extends CI_Controller{
 
     public function checkout()
     {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'CHECKOUT';
         $data['struk'] = $this->db->get('struk_pembelian')->result_array();
         $data['keranjang'] = $this->db->get('keranjang')->result_array();
@@ -94,6 +97,7 @@ Class Kasir extends CI_Controller{
 
     public function histori($id)
     {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['struk'] = $this->db->get_where('struk_pembelian',['id' => $id])->row_array();
         $histori = [
             "id" => $data['struk']['id'],
@@ -115,6 +119,7 @@ Class Kasir extends CI_Controller{
 
     public function makanan()
     {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'DAFTAR MENU - MAKANAN';
         $data['keranjang'] = $this->db->get('keranjang')->result_array();
         $data['kategori'] = $this->db->get('kategori')->result_array();
@@ -126,6 +131,7 @@ Class Kasir extends CI_Controller{
 
     public function minuman()
     {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'DAFTAR MENU - MINUMAN';
         $data['keranjang'] = $this->db->get('keranjang')->result_array();
         $data['kategori'] = $this->db->get('kategori')->result_array();

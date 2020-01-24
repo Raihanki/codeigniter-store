@@ -10,7 +10,9 @@ Class Auth extends CI_Controller{
 
     public function index()
     {
-
+        if($this->session->userdata('email')){
+            redirect('kasir');
+        }
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
         
@@ -21,7 +23,7 @@ Class Auth extends CI_Controller{
         }
     }
     
-    public function _login()
+    private function _login()
     {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
