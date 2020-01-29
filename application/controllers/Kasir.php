@@ -5,6 +5,7 @@ Class Kasir extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('model_search');
         if (!$this->session->userdata('email')) {
             redirect('auth');
         }
@@ -17,6 +18,11 @@ Class Kasir extends CI_Controller{
         $data['kategori'] = $this->db->get('kategori')->result_array();
         $data['menu'] = $this->db->get('menu')->result_array();
         $data['keranjang'] = $this->db->get('keranjang')->result_array();
+
+        if($this->input->post('search')){
+            $data['menu'] = $this->model_search->search();
+        }
+
         $this->load->view('kasir/header',$data);
         $this->load->view('kasir/index',$data);
         $this->load->view('kasir/footer',$data);
@@ -100,7 +106,6 @@ Class Kasir extends CI_Controller{
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['struk'] = $this->db->get_where('struk_pembelian',['id' => $id])->row_array();
         $histori = [
-            "id" => $data['struk']['id'],
             "nama_kasir" => $data['struk']['nama_kasir'],
             "tanggal" => date('d F Y', $data['struk']['tanggal']),
             "harga_total" => $data['struk']['harga_total'],
@@ -124,6 +129,11 @@ Class Kasir extends CI_Controller{
         $data['keranjang'] = $this->db->get('keranjang')->result_array();
         $data['kategori'] = $this->db->get('kategori')->result_array();
         $data['menu'] = $this->db->get_where('menu',['kategori' => "makanan"])->result_array();
+
+        if($this->input->post('search')){
+            $data['menu'] = $this->model_search->search();
+        }
+
         $this->load->view('kasir/header',$data);
         $this->load->view('kasir/index',$data);
         $this->load->view('kasir/footer',$data);
@@ -136,6 +146,11 @@ Class Kasir extends CI_Controller{
         $data['keranjang'] = $this->db->get('keranjang')->result_array();
         $data['kategori'] = $this->db->get('kategori')->result_array();
         $data['menu'] = $this->db->get_where('menu',['kategori' => "minuman"])->result_array();
+
+        if($this->input->post('search')){
+            $data['menu'] = $this->model_search->search();
+        }
+
         $this->load->view('kasir/header',$data);
         $this->load->view('kasir/index',$data);
         $this->load->view('kasir/footer',$data);

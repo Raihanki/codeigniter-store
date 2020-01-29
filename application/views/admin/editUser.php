@@ -26,7 +26,7 @@
                   <option value="2">1</option>
                 </select>
                 <a href="<?= base_url('admin/user') ?>" class="btn btn-danger mr-3">Cancel</a>
-                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-primary edt">Edit</button>
               </div>
             </form>
             </div>

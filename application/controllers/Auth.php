@@ -64,6 +64,11 @@ Class Auth extends CI_Controller{
 
     }
 
+    public function block()
+    {
+        $this->load->view('auth/block');
+    }
+
     public function logout()
     {
         $this->session->unset_userdata('email');

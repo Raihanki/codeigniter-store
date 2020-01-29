@@ -318,5 +318,5 @@ Class Admin extends CI_Controller{
         </div>');
         redirect('admin/histori');
     }
-
+ 
 }

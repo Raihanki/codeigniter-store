@@ -10,6 +10,7 @@
 
     <!-- css untuk kasir -->
     <link rel="stylesheet" href="<?= base_url('assets/') ?>style.css">
+    <link href="<?= base_url('assets/sbad/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <title><?= $title; ?></title>
   </head>
@@ -17,7 +18,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">Gaou Cafe</a>
+            <a class="navbar-brand" href="#"><i class="fas fa-mug-hot"></i> Gaou Cafe</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

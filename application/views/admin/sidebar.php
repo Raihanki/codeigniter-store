@@ -3,8 +3,8 @@
 
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>">
-  <div class="sidebar-brand-icon rotate-n-15">
-    <i class="fas fa-laugh-wink"></i>
+  <div class="sidebar-brand-icon">
+    <i class="fas fa-mug-hot"></i>
   </div>
   <div class="sidebar-brand-text mx-2">GAOU CAFE</div>
 </a>
@@ -17,7 +17,7 @@
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
   <a class="nav-link" href="<?= base_url('admin'); ?>">
-    <i class="fas fa-fw fa-tachometer-alt"></i>
+    <i class="fas fa-fw fa-home"></i>
     <span>Dashboard</span></a>
 </li>
 
@@ -31,7 +31,7 @@
 
 <li class="nav-item">
   <a class="nav-link" href="<?= base_url('admin/user'); ?>">
-    <i class="fas fa-fw fa-chart-area"></i>
+    <i class="fas fa-fw fa-users"></i>
     <span>Data User</span></a>
 </li>
 
@@ -44,19 +44,19 @@
 
 <li class="nav-item">
   <a class="nav-link" href="<?= base_url('admin/menu'); ?>">
-    <i class="fas fa-fw fa-chart-area"></i>
+    <i class="fas fa-fw fa-bars"></i>
     <span>Menu</span></a>
 </li>
 
 <li class="nav-item">
   <a class="nav-link" href="<?= base_url('admin/kategori'); ?>">
-    <i class="fas fa-fw fa-chart-area"></i>
+    <i class="fas fa-fw fa-list-alt"></i>
     <span>Kategori</span></a>
 </li>
 
 <li class="nav-item">
   <a class="nav-link" href="<?= base_url('admin/histori'); ?>">
-    <i class="fas fa-fw fa-chart-area"></i>
+    <i class="fas fa-fw fa-history"></i>
     <span>Histori Penjualan</span></a>
 </li>
 
@@ -70,7 +70,7 @@
 
 <li class="nav-item">
   <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
-    <i class="fas fa-fw fa-chart-area"></i>
+    <i class="fas fa-fw fa-sign-out-alt"></i>
     <span>Logout</span></a>
 </li>
 

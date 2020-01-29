@@ -17,13 +17,13 @@
                             </div>
                         </div>
                     </div>
-                    <?= form_open() ?>
+                    <?= form_open('') ?>
                         <div class="row m-3">
                             <div class="col-sm-1">
                                 <button class="btn btn-primary" type="submit">Search</button>
                             </div>
                             <div class="col-sm-3">
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control" type="search" name="search" placeholder="Search" aria-label="Search">
                             </div>
                         </div>
                     </form>
@@ -41,6 +41,11 @@
                                 </tr>
                             </thead>
                             <?php $i = 1; ?>
+                            <?php if(!$menu) : ?>
+                                <hr>
+                                <h1 class="text-center">Menu Tidak Terdaftar</h1>
+                            <?php else : ?>
+                            <?php endif; ?>
                             <?php foreach($menu as $m) : ?>
                             <tbody>
                             <form action="<?= base_url('kasir/tambahKeranjang/') ?><?= $m['id'] ?>" method="post">
@@ -53,6 +58,9 @@
                                 <td><?= $m['porsi'] ?></td>
                                 <td><img src="<?= base_url('assets/imgmenu/') ?><?= $m['gambar']; ?>" alt="<?= $m['nama_menu'] ?>" width="80px" height="70px"></td>
                                 <td>
+                                <?php if($m['porsi'] == 1) : ?>
+                                    <a href="#" class="btn btn-warning">Sold Out</a>
+                                <?php else : ?>
                                 <select class="form-control" name="porsi" id="inlineFormCustomSelect">
                                     <option selected>Porsi</option>
                                     <option value="1">1</option>
@@ -64,6 +72,8 @@
                                     <option value="7">7</option>
                                 </select>
                                 <button type="submit" class="btn btn-primary">Tambah</button>
+                                <?php endif; ?>
+                                </td>
                                 </form>
                                 </tr>
                             </tbody>

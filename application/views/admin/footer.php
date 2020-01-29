@@ -40,6 +40,7 @@
 
   <!-- Bootstrap core JavaScript-->
   <script src="<?= base_url('assets/sbad/'); ?>vendor/jquery/jquery.min.js"></script>
+  <script src="<?= base_url('assets/sweetalert/swal/') ?>sweetalert2.all.min.js"></script>
   <script src="<?= base_url('assets/sbad/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
