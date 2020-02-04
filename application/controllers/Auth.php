@@ -17,7 +17,7 @@ Class Auth extends CI_Controller{
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
         
         if($this->form_validation->run() == false){
-            $this->load->view('auth/login');
+            $this->load->view('auth/logon');
         }else{
             $this->_login();
         }
